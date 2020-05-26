@@ -1,3 +1,5 @@
+<?php include "./lib/User.php" ?>
+
 <title>Register Page</title>
 <?php include "./inc/header.php" ?>
 
@@ -13,30 +15,30 @@
 		<div class="card-body">
 			<div class="container">
 				<div class="col-sm-12 col-lg-6 offset-lg-3 my-5">	
-					<form>
+					<form method="POST" action="">
 						<div class="form-group">
 							<label for="name">Full Name</label>
-							<input type="text" class="form-control" id="name" placeholder="Enter Full Name" required>
+							<input required name="name" type="text" class="form-control" id="name" placeholder="Enter Full Name">
 						</div>
 						<div class="form-group">
 							<label for="username">Username</label>
-							<input type="text" class="form-control" id="username"  placeholder="Enter User Name" required>
+							<input required name="username" type="text" class="form-control" id="username"  placeholder="Enter User Name">
 							<small class="form-text text-muted">Username Must be unquie</small>
 						</div>
 						
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+							<input required name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+							<input required name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 						</div>
 						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<input required type="checkbox" class="form-check-input" id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">I agree all terms & conditions</label>
 						</div>
-						<button type="submit" class="btn btn-dark">Submit</button>
+						<button name="submitRegister" type="submit" class="btn btn-dark">Submit</button>
 					</form>
 				</div>
 			</div>

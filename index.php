@@ -1,5 +1,5 @@
 <?php include "./inc/header.php" ?>
-
+<?php include "./lib/User.php";?>
 		<!-- Navber -->
     	<?php include "./inc/nav.php" ?>
 		
