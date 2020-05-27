@@ -1,10 +1,17 @@
 <title>Login Page</title>
 <?php include "./inc/header.php" ?>
-<?php include "./lib/User.php" ?>
 
 <!-- Navber -->
 <?php include "./inc/nav.php" ?>
 
+
+<?php 
+// Redirect user to index page without login
+if(isset($_SESSION['login'])==true){
+	header("location: index.php");
+	exit();
+}
+?>
 <!-- Main Content -->
 <div class="container my-2">
 	<div class="card">

@@ -1,8 +1,9 @@
 <?php 
-include_once './lib/Session.php';
+include "./lib/User.php";
 session_start();
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
