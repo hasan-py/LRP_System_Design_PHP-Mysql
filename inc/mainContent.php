@@ -1,25 +1,35 @@
-<div class="container my-5">
+<div class="container my-2">
+	<?php 
+	if(isset($_SESSION['loginMsg'])){
+		echo $_SESSION['loginMsg'];
+		$_SESSION['loginMsg'] = "";
+	}
+	?>
 	<div class="card shadow">
 		<div class="card-header">
 			<span class="float-left"><h2 class="font-weight-light">User List</h2></span>
-			<span class="float-right"><h2 class="font-weight-light">Welcome,<strong>Hasan</strong></h2></span>
+			<?php 
+			if(isset($_SESSION['name'])){
+				?>
+				<span class="float-right"><h2 class="font-weight-light">Welcome,<strong>
+				<?php echo $_SESSION['name']; ?>
+				</strong></h2></span>
+			<?php } ?>
 		</div>
 		<div class="card-body">
 			<div class="container">
-				<table class="table table-hover">
+				<table class="table-responsive table table-hover">
 					<thead>
 						<tr>
-							<th>Serial</th>
-							<th>Name</th>
-							<th>Username</th>
-							<th>Email Address</th>
-							<th>Join Date</th>
-							<th>Actions</th>
+							<th class="w-25">Name</th>
+							<th class="w-25">Username</th>
+							<th class="w-25">Email Address</th>
+							<th class="w-25">Join Date</th>
+							<th class="w-25">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>1</td>
 							<td>Hasan</td>
 							<td>hasan29351</td>
 							<td>hasan29351@gmail.com</td>
@@ -29,7 +39,6 @@
 							</td>
 						</tr>
 						<tr>
-							<td>1</td>
 							<td>Hasan</td>
 							<td>hasan29351</td>
 							<td>hasan29351@gmail.com</td>
@@ -39,7 +48,6 @@
 							</td>
 						</tr>
 						<tr>
-							<td>1</td>
 							<td>Hasan</td>
 							<td>hasan29351</td>
 							<td>hasan29351@gmail.com</td>

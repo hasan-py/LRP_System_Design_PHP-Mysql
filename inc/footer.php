@@ -1,4 +1,4 @@
-<div class="container-fuild">
+<div class="container">
 	<div class="card">
 		<div class="card-body">
 			<span class="float-left "><h5 class="font-weight-light">PHP OOP</h5></span>

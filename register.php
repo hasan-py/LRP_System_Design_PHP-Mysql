@@ -1,20 +1,27 @@
-<?php include "./lib/User.php" ?>
-
 <title>Register Page</title>
 <?php include "./inc/header.php" ?>
+<?php include "./lib/User.php" ?>
 
 <!-- Navber -->
 <?php include "./inc/nav.php" ?>
 
 <!-- Main Content -->
-<div class="container my-5">
+<div class="container my-2">
 	<div class="card">
 		<div class="card-header">
 			<span class="float-left"><h2 class="font-weight-light">Register Page</h2></span>
+			<span class="float-right"><a class="btn btn-dark" href="login.php">< Login Page</a></span>
 		</div>
 		<div class="card-body">
 			<div class="container">
-				<div class="col-sm-12 col-lg-6 offset-lg-3 my-5">	
+				<div class="col-sm-12 col-lg-6 offset-lg-3 my-5">
+				
+				<!-- Register method call from User -->
+				<?php 
+				if(isset($_POST['submitRegister'])){
+					echo $user->register($_POST);
+				}	
+				?>	
 					<form method="POST" action="">
 						<div class="form-group">
 							<label for="name">Full Name</label>
@@ -40,6 +47,7 @@
 						</div>
 						<button name="submitRegister" type="submit" class="btn btn-dark">Submit</button>
 					</form>
+					an account ? <a href="login.php">login here</a>
 				</div>
 			</div>
 		</div>

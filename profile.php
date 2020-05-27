@@ -5,7 +5,7 @@
 <?php include "./inc/nav.php" ?>
 
 <!-- Main Content -->
-<div class="container my-5">
+<div class="container my-2">
 	<div class="card">
 		<div class="card-header">
 			<span class="float-left"><h2 class="font-weight-light">User Profile</h2></span>
