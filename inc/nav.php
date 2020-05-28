@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action']==='logout'){
         if(isset($_SESSION['login'])==true){
         ?>
         <li class="nav-item active">
-          <a class="nav-link" href="profile.php">Profile <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="profile.php?u_id=<?php echo $_SESSION['id'] ?>">Profile <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="?action=logout">Logout</a>

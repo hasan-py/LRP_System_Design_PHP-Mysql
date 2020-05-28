@@ -1,4 +1,5 @@
 <?php 
+include "./lib/db.php";
 include "./lib/User.php";
 session_start();
 ?>

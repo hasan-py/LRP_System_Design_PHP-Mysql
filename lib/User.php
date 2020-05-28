@@ -10,7 +10,7 @@ class User {
 		$email = $data['email'];
 		$password = $data['password'];
 		
-		if(strlen($password)>8){
+		if(strlen($password)>7){
 			$password = md5($password);
 		}
 
@@ -46,7 +46,7 @@ class User {
 				return $msg;
 			}
 		}
-		$query = "INSERT INTO users VALUES('','{$username}','{$name}','{$email}','{$password}')";
+		$query = "INSERT INTO users VALUES('','{$name}','{$username}','{$email}','{$password}',now())";
 		$result = mysqli_query($connection,$query);
 		if($result==true){
 			$msg = "<div class='alert alert-success'>
@@ -92,9 +92,54 @@ class User {
 			return $msg;
 		}
 	}
+	
+	function loginCheck(){
+		if(isset($_SESSION['login'])==true){
+			header("location: index.php");
+			exit();
+		}
+	}
 
+	function logoutCheck(){
+		if(isset($_SESSION['login'])==false){
+			header("location: login.php");
+			exit();
+		}
+	}
 
+	function getAllUserDate(){
+		$connection = mysqli_connect("localhost","root","","lrp_system");
+		if(isset($_SESSION['login'])==true){
+			$query = "SELECT * FROM users ORDER BY id DESC";
+			$result = mysqli_query($connection,$query);
+			return $result;
+		}
+	}
+
+	function updateProfile($id,$fullname,$username,$email){
+		if($fullname == "" OR $username == "" OR $email == ""){
+			$msg = "<div class='alert alert-warning'>
+			Field Must Not Be Empty.
+			</div>";
+			return $msg;
+		}
+		$connection = mysqli_connect("localhost","root","","lrp_system");
+		$update_query = "UPDATE users SET fullname='{$fullname}',username='{$username}', email='{$email}' WHERE id=$id";
+		$result = mysqli_query($connection,$update_query);
+		if($result){
+			$_SESSION["name"] = $fullname;
+			$_SESSION["username"] = $username;
+			$msg = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+				<strong>Profile update successfully.</strong>
+				<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>";
+			return $msg;
+		}
+	}
 }
+
 
 $user = new User();
 

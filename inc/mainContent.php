@@ -18,44 +18,41 @@
 		</div>
 		<div class="card-body">
 			<div class="container">
-				<table class="table-responsive table table-hover">
+				<table class="table-responsive table table-hover text-center">
 					<thead>
 						<tr>
+							<th>S.No</th>
 							<th class="w-25">Name</th>
 							<th class="w-25">Username</th>
 							<th class="w-25">Email Address</th>
 							<th class="w-25">Join Date</th>
-							<th class="w-25">Actions</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
+					
+					<?php 
+						$result = $user->getAllUserDate();
+						$s_no = 0;
+						while($row=mysqli_fetch_assoc($result)){
+							$s_no++;
+							$id = $row['id'];
+							$fullname = $row['fullname'];
+							$username = $row['username'];
+							$email = $row['email'];
+							$join_date = $row['join_date'];
+					 ?>
 						<tr>
-							<td>Hasan</td>
-							<td>hasan29351</td>
-							<td>hasan29351@gmail.com</td>
-							<td>2019, July 30</td>
+							<td><?php echo $s_no ?></td>
+							<td><?php echo $fullname ?></td>
+							<td><?php echo $username ?></td>
+							<td><?php echo $email ?></td>
+							<td><?php echo $join_date ?></td>
 							<td>
-								<a href="profile.php?p_id=1" class="btn btn-dark">View</a>
+								<a href="profile.php?u_id=<?php echo $id ?>" class="btn btn-dark">View</a>
 							</td>
 						</tr>
-						<tr>
-							<td>Hasan</td>
-							<td>hasan29351</td>
-							<td>hasan29351@gmail.com</td>
-							<td>2019, July 30</td>
-							<td>
-								<a href="profile.php?p_id=1" class="btn btn-dark">View</a>
-							</td>
-						</tr>
-						<tr>
-							<td>Hasan</td>
-							<td>hasan29351</td>
-							<td>hasan29351@gmail.com</td>
-							<td>2019, July 30</td>
-							<td>
-								<a href="profile.php?p_id=1" class="btn btn-dark">View</a>
-							</td>
-						</tr>
+					<?php } ?>
 					</tbody>
 				</table>
 			</div>

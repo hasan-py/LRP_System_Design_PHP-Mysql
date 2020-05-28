@@ -6,11 +6,8 @@
 
 
 <?php 
-// Redirect user to index page without login
-if(isset($_SESSION['login'])==true){
-	header("location: index.php");
-	exit();
-}
+// If user login ! it automaticly redirect to index
+$user->loginCheck();
 ?>
 <!-- Main Content -->
 <div class="container my-2">
