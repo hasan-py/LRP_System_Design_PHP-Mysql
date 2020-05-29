@@ -9,6 +9,20 @@
 $user->logoutCheck();
 ?>
 
+<?php 
+
+if(isset($_GET['u_id'])){
+	$userID = $_GET['u_id'];
+	$query = "SELECT * FROM users WHERE id={$userID}";
+	$result = mysqli_query($connection,$query);
+	if(!$row=mysqli_fetch_assoc($result)>0){
+		header('Location: index.php');
+	}
+	
+
+}
+?>
+
 <!-- Main Content -->
 <div class="container my-2">
 	<div class="card">
@@ -30,6 +44,7 @@ $user->logoutCheck();
 						$query = "SELECT * FROM users WHERE id={$userID}";
 						$result = mysqli_query($connection,$query);
 						while($row=mysqli_fetch_assoc($result)){
+							$id = $row['id'];
 							$fullname = $row['fullname'];
 							$username = $row['username'];
 							$email = $row['email'];
@@ -55,6 +70,7 @@ $user->logoutCheck();
 									<input name="email" value="<?php echo $email ?>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
 								</div>
 								<button name="updateSubmit" type="submit" class="btn btn-dark">Update Profile</button>
+								<a style="background:#C4CAD2;" href="changepass.php?u_id=<?php echo $id ?>" class="btn btn-light">Change Password</a>
 							</form>
 						<?php }else{ ?>
 							<form>

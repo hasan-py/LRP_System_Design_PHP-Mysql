@@ -130,14 +130,68 @@ class User {
 			$_SESSION["name"] = $fullname;
 			$_SESSION["username"] = $username;
 			$msg = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-				<strong>Profile update successfully.</strong>
+			<strong>Profile update successfully.</strong>
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+			<span aria-hidden='true'>&times;</span>
+			</button>
+			</div>";
+			return $msg;
+		}
+	}
+	
+	function updatePassword($id,$oldpassword,$newpassword){
+		if($oldpassword == "" && $newpassword == ""){
+			$msg = "<div class='alert alert-warning'>
+			Field Must Not Be Empty.
+			</div>";
+			return $msg;
+		}
+
+		$oldpassword = md5($oldpassword);
+
+		$connection = mysqli_connect("localhost","root","","lrp_system");
+
+		$oldCheckQuery = "SELECT password FROM users WHERE id=$id AND password='{$oldpassword}'";
+		$oldCheckQueryResult = mysqli_query($connection,$oldCheckQuery);
+
+		if(mysqli_num_rows($oldCheckQueryResult)>0){
+			
+			if(strlen($newpassword)<8){
+				$msg = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+				<strong>Password must be 8 charecter</strong>
 				<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 				<span aria-hidden='true'>&times;</span>
 				</button>
 				</div>";
+				return $msg;
+			}
+			$newpassword = md5($newpassword);
+
+
+			$update_query = "UPDATE users SET password='{$newpassword}' WHERE id={$id}";
+			$result = mysqli_query($connection,$update_query);
+			if($result){
+				$msg = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+				<strong>Password update successfully.</strong>
+				<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>";
+				return $msg;
+			}
+		}
+		else{
+			$msg = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+			<strong>Old password doesn't macth.</strong>
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+			<span aria-hidden='true'>&times;</span>
+			</button>
+			</div>";
 			return $msg;
 		}
+
 	}
+
 }
 
 
